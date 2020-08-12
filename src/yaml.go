@@ -33,7 +33,7 @@ func parseContentYml() string {
 
 // Read config yml file , update Config instance with this data and return content
 func (c *Config) readConfigYml() *Config {
-	file, err := ioutil.ReadFile("bot.config.yml")
+	file, err := ioutil.ReadFile("config.yml")
 	if err != nil {
 		log.Panicf("Error opening config file: %s", err)
 	}
