@@ -18,7 +18,7 @@ type Config struct {
 
 // Parse content yml file and return its content
 func parseContentYml() string {
-	content, err := ioutil.ReadFile("content.yml")
+	content, err := ioutil.ReadFile("./config/content.yml")
 	if err != nil {
 		log.Panicf("Reading file error: %s", err)
 	}
@@ -33,7 +33,7 @@ func parseContentYml() string {
 
 // Read config yml file , update Config instance with this data and return content
 func (c *Config) readConfigYml() *Config {
-	file, err := ioutil.ReadFile("config.yml")
+	file, err := ioutil.ReadFile("./config/config.yml")
 	if err != nil {
 		log.Panicf("Error opening config file: %s", err)
 	}
@@ -44,7 +44,7 @@ func (c *Config) readConfigYml() *Config {
 	}
 
 	// Debug only
-	fmt.Printf("content.yml: %s", c)
+	fmt.Printf("content.yml: %s\n", c)
 	return c
 }
 

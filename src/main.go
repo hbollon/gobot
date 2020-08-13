@@ -16,6 +16,8 @@ func main() {
 
 	// Declare the HTTP methods for our routes
 	router.HandleFunc("/", indexHandler).Methods("GET")
+	router.HandleFunc("/webhook", whGetHandler).Methods("GET")
+	//router.HandleFunc("/webhook", webhookPostHandler).Methods("POST")
 	err := http.ListenAndServe(port, router)
 
 	// Error handling on server startup

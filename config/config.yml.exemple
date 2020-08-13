@@ -1,0 +1,3 @@
+app_secret: <app_secret>
+access_token: <facebook_app_token>
+verify_token: <webhook_verify_key>
