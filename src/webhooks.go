@@ -40,15 +40,23 @@ func whGetHandler(writter http.ResponseWriter, request *http.Request) {
 
 // Handle POST request made to webhook
 // It serialize request content into Callback and call processMassage for response
-/* func whPostHandler(writter http.ResponseWriter, request *http.Request) {
+func whPostHandler(writter http.ResponseWriter, request *http.Request) {
+	fmt.Printf("POST request received\n")
+
 	var callback Callback
+	json.NewDecoder(request.Body).Decode(&callback) // Read and parse request body into callback
 
 	// Check if req token match with config file token
-	if reqToken == token {
-		writter.Header().Set("Content-Type", "application/json")
-		writter.WriteHeader(http.StatusOK)
-		writter.Write([]byte(reqChallenge))
+	if callback.Object == "page" {
+		for _, data := range callback.Entry {
+			for _, ev := range data.Messaging {
+				Messaging.MessageBuilder(ev)
+			}
+			writter.WriteHeader(200)
+			writter.Write([]byte("Message received !"))
+		}
 	} else {
-		fmt.Fprint(writter, "Tokens don't match")
+		writter.WriteHeader(404)
+		writter.Write([]byte("Message not supported !"))
 	}
-} */
+}
