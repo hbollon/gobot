@@ -2,7 +2,19 @@ package analysis
 
 //Yaml "gobot/src/yaml"
 
-func LevenshteinDistance(str1, str2 string) int {
+func matchingPercentage(str1, str2 string) float64 {
+	// Get Levenshtein distance between these two strings
+	var distance = levenshteinDistance(str1, str2)
+
+	// Compare strings lenght and make a matching percentage between them
+	if len(str1) >= len(str2) {
+		return float64(len(str1)-distance) / float64(len(str1))
+	}
+	return float64(len(str2)-distance) / float64(len(str2))
+
+}
+
+func levenshteinDistance(str1, str2 string) int {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
