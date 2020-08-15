@@ -16,6 +16,7 @@ type Config struct {
 	VerifyToken string `yaml:"verify_token"`
 }
 
+// ResponsesPool : Parsed data from content yml file, it contain all messages/response template availlable for chatbot
 type ResponsesPool struct {
 	Templates []struct {
 		Messages []string `yaml:"messages"`
@@ -61,6 +62,7 @@ func (c *Config) readConfigYml() *Config {
 	return c
 }
 
+// GetToken : Return string containing all tokens/config variables from config.yml
 func GetToken() string {
 	var c Config
 	c.readConfigYml()
