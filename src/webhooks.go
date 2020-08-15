@@ -50,11 +50,11 @@ func whPostHandler(writter http.ResponseWriter, request *http.Request) {
 	if callback.Object == "page" {
 		for _, data := range callback.Entry {
 			for _, ev := range data.Messaging {
-				Messaging.MessageBuilder(ev)
+				Messaging.MessageBuilder(ev, config.AccessToken)
 			}
-			writter.WriteHeader(200)
-			writter.Write([]byte("Message received !"))
 		}
+		writter.WriteHeader(200)
+		writter.Write([]byte("Message received !"))
 	} else {
 		writter.WriteHeader(404)
 		writter.Write([]byte("Message not supported !"))
