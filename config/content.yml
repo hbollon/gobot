@@ -1,0 +1,7 @@
+templates: 
+    - messages: ["Hello", "Hi"]
+      response: "Hi !\nI'm GoBot chat bot ! :)"
+    - messages: ["Who's your creator ?"]
+      response: "I was build by @hbollon from Bits Please Inc. :)\nMy source code is available on his Github : github.com/hbollon !"
+
+default_response: "Sorry, I don't understand your message... :/\nPlease try again with different sentence or using more words."

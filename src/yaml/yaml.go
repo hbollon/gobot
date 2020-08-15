@@ -1,4 +1,4 @@
-package main
+package yaml
 
 import (
 	"encoding/json"
@@ -16,19 +16,32 @@ type Config struct {
 	VerifyToken string `yaml:"verify_token"`
 }
 
+type ResponsesPool struct {
+	Templates []struct {
+		Messages []string `yaml:"messages"`
+		Response string   `yaml:"response"`
+	} `yaml:"templates"`
+	DefaultResponse string `yaml:"default_response"`
+}
+
+var responsesPool ResponsesPool = parseContentYml()
+
 // Parse content yml file and return its content
-func parseContentYml() string {
+func parseContentYml() ResponsesPool {
+	var pool ResponsesPool
 	content, err := ioutil.ReadFile("./config/content.yml")
 	if err != nil {
 		log.Panicf("Reading file error: %s", err)
 	}
 
-	out, err := yaml.Marshal(content)
+	err = yaml.Unmarshal(content, &pool)
 	if err != nil {
-		log.Printf("Error during marshal content: %s", err)
+		log.Printf("Error during unmarshal content: %s", err)
 	}
 
-	return string(out)
+	// Debug only
+	fmt.Printf("content.yml: %s\n\n", pool)
+	return pool
 }
 
 // Read config yml file , update Config instance with this data and return content
@@ -44,11 +57,11 @@ func (c *Config) readConfigYml() *Config {
 	}
 
 	// Debug only
-	fmt.Printf("content.yml: %s\n", c)
+	fmt.Printf("config.yml: %s\n\n", c)
 	return c
 }
 
-func getToken() string {
+func GetToken() string {
 	var c Config
 	c.readConfigYml()
 	content, err := json.Marshal(c)

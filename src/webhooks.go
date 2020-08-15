@@ -6,10 +6,11 @@ import (
 	"net/http"
 
 	Messaging "gobot/src/messaging"
+	Yaml "gobot/src/yaml"
 )
 
-var config Config // Config struct instance
-var tokenInit = getToken()
+var config Yaml.Config // Config struct instance
+var tokenInit = Yaml.GetToken()
 var jsonData = json.Unmarshal([]byte(tokenInit), &config)
 
 type Callback struct {
