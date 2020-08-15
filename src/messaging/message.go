@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	Analysis "gobot/src/analysis"
 	"log"
 	"net/http"
 )
@@ -20,7 +21,7 @@ func MessageBuilder(ev Messaging, accessToken string) {
 			ID: ev.Sender.ID,
 		},
 		Message: Message{
-			Text: "Test response",
+			Text: Analysis.FindResponse(ev.Message.Text),
 		},
 	}
 

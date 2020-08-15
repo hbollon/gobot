@@ -17,7 +17,7 @@ type Config struct {
 }
 
 // ResponsesPool : Parsed data from content yml file, it contain all messages/response template availlable for chatbot
-type ResponsesPool struct {
+type ResponsePool struct {
 	Templates []struct {
 		Messages []string `yaml:"messages"`
 		Response string   `yaml:"response"`
@@ -25,11 +25,12 @@ type ResponsesPool struct {
 	DefaultResponse string `yaml:"default_response"`
 }
 
-var responsesPool ResponsesPool = parseContentYml()
+// ResponsePool : Exported and parsed content.yml
+var ResponsesPool ResponsePool = parseContentYml()
 
 // Parse content yml file and return its content
-func parseContentYml() ResponsesPool {
-	var pool ResponsesPool
+func parseContentYml() ResponsePool {
+	var pool ResponsePool
 	content, err := ioutil.ReadFile("./config/content.yml")
 	if err != nil {
 		log.Panicf("Reading file error: %s", err)

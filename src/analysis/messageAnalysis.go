@@ -1,6 +1,36 @@
 package analysis
 
-//Yaml "gobot/src/yaml"
+import (
+	Yaml "gobot/src/yaml"
+)
+
+// Return most high matching response in function of the received message
+func FindResponse(m string) string {
+	var bestMatchingScore float64
+	var currentResponse string
+
+	for _, template := range Yaml.ResponsesPool.Templates {
+		for _, message := range template.Messages {
+			percent := matchingPercentage(m, message)
+			if bestMatchingScore != 0 {
+				if percent >= 0.50 && percent > bestMatchingScore {
+					bestMatchingScore = percent
+					currentResponse = template.Response
+				}
+			} else {
+				if percent >= 0.50 {
+					bestMatchingScore = percent
+					currentResponse = template.Response
+				}
+			}
+		}
+	}
+
+	if currentResponse != "" {
+		return currentResponse
+	}
+	return Yaml.ResponsesPool.DefaultResponse
+}
 
 func matchingPercentage(str1, str2 string) float64 {
 	// Get Levenshtein distance between these two strings
