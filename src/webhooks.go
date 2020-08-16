@@ -10,8 +10,8 @@ import (
 )
 
 var config Yaml.Config // Config struct instance
-var tokenInit = Yaml.GetToken()
-var jsonData = json.Unmarshal([]byte(tokenInit), &config)
+var configInit = Yaml.GetConfig()
+var jsonData = json.Unmarshal([]byte(configInit), &config)
 
 type Callback struct {
 	Object string `json:"object,omitempty"`
@@ -51,7 +51,7 @@ func whPostHandler(writter http.ResponseWriter, request *http.Request) {
 	if callback.Object == "page" {
 		for _, data := range callback.Entry {
 			for _, ev := range data.Messaging {
-				Messaging.MessageBuilder(ev, config.AccessToken)
+				Messaging.MessageBuilder(ev, config.AccessToken, config.MatchPercentage)
 			}
 		}
 		writter.WriteHeader(200)

@@ -13,7 +13,7 @@ import (
 const API_URL = "https://graph.facebook.com/v8.0/me/messages?access_token=%s"
 
 // Build response request from Messaging
-func MessageBuilder(ev Messaging, accessToken string) {
+func MessageBuilder(ev Messaging, accessToken string, matchPercentage int) {
 	fmt.Printf("Building response message...\n")
 	client := &http.Client{}
 	response := Response{
@@ -21,7 +21,7 @@ func MessageBuilder(ev Messaging, accessToken string) {
 			ID: ev.Sender.ID,
 		},
 		Message: Message{
-			Text: Analysis.FindResponse(ev.Message.Text),
+			Text: Analysis.FindResponse(ev.Message.Text, matchPercentage),
 		},
 	}
 

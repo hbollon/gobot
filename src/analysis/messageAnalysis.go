@@ -5,7 +5,7 @@ import (
 )
 
 // Return most high matching response in function of the received message
-func FindResponse(m string) string {
+func FindResponse(m string, minMatchPercentage int) string {
 	var bestMatchingScore float64
 	var currentResponse string
 
@@ -13,12 +13,12 @@ func FindResponse(m string) string {
 		for _, message := range template.Messages {
 			percent := matchingPercentage(m, message)
 			if bestMatchingScore != 0 {
-				if percent >= 0.50 && percent > bestMatchingScore {
+				if percent >= (float64(minMatchPercentage) / 100) && percent > bestMatchingScore {
 					bestMatchingScore = percent
 					currentResponse = template.Response
 				}
 			} else {
-				if percent >= 0.50 {
+				if percent >= (float64(minMatchPercentage) / 100) {
 					bestMatchingScore = percent
 					currentResponse = template.Response
 				}

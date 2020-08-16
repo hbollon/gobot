@@ -1,3 +1,7 @@
+# Facebook API config
 app_secret: <app_secret>
 access_token: <facebook_app_token>
 verify_token: <webhook_verify_key>
+
+# Gobot config
+min_matching_percentage: 40 # Must be between 0 and 100 (be smart and don't put 0 ^^ )

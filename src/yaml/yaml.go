@@ -14,6 +14,7 @@ type Config struct {
 	AppSecret   string `yaml:"app_secret"`
 	AccessToken string `yaml:"access_token"`
 	VerifyToken string `yaml:"verify_token"`
+	MatchPercentage int `yaml:"min_matching_percentage"`
 }
 
 // ResponsesPool : Parsed data from content yml file, it contain all messages/response template availlable for chatbot
@@ -63,8 +64,8 @@ func (c *Config) readConfigYml() *Config {
 	return c
 }
 
-// GetToken : Return string containing all tokens/config variables from config.yml
-func GetToken() string {
+// GetConfig : Return string containing all tokens/config variables from config.yml
+func GetConfig() string {
 	var c Config
 	c.readConfigYml()
 	content, err := json.Marshal(c)
