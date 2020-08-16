@@ -1,3 +1,6 @@
+# DS Store custom attributes 
+.DS_Store
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -16,3 +19,6 @@ vendor/
 
 # YML Config file
 config/config.yml
+
+# VSCode directory
+.vscode/
