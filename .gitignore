@@ -22,3 +22,5 @@ config/config.yml
 
 # VSCode directory
 .vscode/
+
+main
