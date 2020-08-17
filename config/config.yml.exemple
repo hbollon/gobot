@@ -1,7 +1,7 @@
 # Facebook API config
-app_secret: <app_secret>
-access_token: <facebook_app_token>
-verify_token: <webhook_verify_key>
+app_secret: <app_secret> # Secret key which can be found in the app settings on Facebook Developer dashboard
+access_token: <facebook_app_token> # Generated token on app Messenger product
+verify_token: <webhook_verify_key> # Verify token of your webhook URL 
 
 # Gobot config
 min_matching_percentage: 40 # Must be between 0 and 100 (be smart and don't put 0 ^^ )
