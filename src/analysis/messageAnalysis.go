@@ -4,7 +4,7 @@ import (
 	Yaml "gobot/src/yaml"
 )
 
-// Return most high matching response in function of the received message
+// FindResponse return most high matching response in function of the received message
 func FindResponse(m string, minMatchPercentage int) string {
 	var bestMatchingScore float64
 	var currentResponse string
@@ -13,7 +13,7 @@ func FindResponse(m string, minMatchPercentage int) string {
 		for _, message := range template.Messages {
 			percent := matchingPercentage(m, message)
 			if bestMatchingScore != 0 {
-				if percent >= (float64(minMatchPercentage) / 100) && percent > bestMatchingScore {
+				if percent >= (float64(minMatchPercentage)/100) && percent > bestMatchingScore {
 					bestMatchingScore = percent
 					currentResponse = template.Response
 				}

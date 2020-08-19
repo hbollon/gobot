@@ -11,13 +11,13 @@ import (
 
 // Config : Yml config data
 type Config struct {
-	AppSecret   string `yaml:"app_secret"`
-	AccessToken string `yaml:"access_token"`
-	VerifyToken string `yaml:"verify_token"`
-	MatchPercentage int `yaml:"min_matching_percentage"`
+	AppSecret       string `yaml:"app_secret"`
+	AccessToken     string `yaml:"access_token"`
+	VerifyToken     string `yaml:"verify_token"`
+	MatchPercentage int    `yaml:"min_matching_percentage"`
 }
 
-// ResponsesPool : Parsed data from content yml file, it contain all messages/response template availlable for chatbot
+// ResponsePool : parsed data from content yml file, it contain all messages/response template availlable for chatbot
 type ResponsePool struct {
 	Templates []struct {
 		Messages []string `yaml:"messages"`
@@ -26,7 +26,7 @@ type ResponsePool struct {
 	DefaultResponse string `yaml:"default_response"`
 }
 
-// ResponsePool : Exported and parsed content.yml
+// ResponsesPool : exported and parsed content.yml
 var ResponsesPool ResponsePool = parseContentYml()
 
 // Parse content yml file and return its content
@@ -43,7 +43,7 @@ func parseContentYml() ResponsePool {
 	}
 
 	// Debug only
-	fmt.Printf("content.yml: %s\n\n", pool)
+	fmt.Printf("content.yml: %+v\n\n", pool)
 	return pool
 }
 
@@ -60,7 +60,7 @@ func (c *Config) readConfigYml() *Config {
 	}
 
 	// Debug only
-	fmt.Printf("config.yml: %s\n\n", c)
+	fmt.Printf("config.yml: %+v\n\n", c)
 	return c
 }
 

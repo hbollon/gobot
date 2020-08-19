@@ -9,10 +9,10 @@ import (
 	"net/http"
 )
 
-// Facebook API url for request
+// API_URL : Facebook API url for request
 const API_URL = "https://graph.facebook.com/v8.0/me/messages?access_token=%s"
 
-// Build response request from Messaging
+// MessageBuilder build response request from Messaging
 func MessageBuilder(ev Messaging, accessToken string, matchPercentage int) {
 	fmt.Printf("Building response message...\n")
 	client := &http.Client{}

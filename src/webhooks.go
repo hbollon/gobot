@@ -13,6 +13,8 @@ var config Yaml.Config // Config struct instance
 var configInit = Yaml.GetConfig()
 var jsonData = json.Unmarshal([]byte(configInit), &config)
 
+// Callback : callback struct for responses
+// Based on Facebook API callback standards
 type Callback struct {
 	Object string `json:"object,omitempty"`
 	Entry  []struct {
