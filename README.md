@@ -1,19 +1,22 @@
 <h1 align="center">Gobot : Messenger ChatBot Golang</h1>
 
 <p align="center">
+  <a href="https://goreportcard.com/report/github.com/hbollon/gobot" target="_blank">
+    <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/hbollon/gobot" />
+  </a>
   <a href="https://github.com/hbollon/gobot/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
-> Messenger chatbot using the Levenshtein distance algorithm for pattern matching. Use mux and yaml.v2.
+> Facebook Messenger chatbot using the Levenshtein distance algorithm for pattern matching. Use mux and yaml.v2.
 
 ---
 
 ## Table of Contents
 
 - [Requirements](#requirements)
-- [Introduction](#introduction)
+- [Presentation](#presentation)
 - [Features](#features)
 - [Installation](#installation)
 - [Customize chatbot responses](#customize-chatbot-responses)
@@ -26,9 +29,10 @@
 
 ## Requirements
 - [Go](https://golang.org/doc/install)
+- [Dep](https://github.com/golang/dep) : Package Manager
 - Facebook account
 
-## Introduction
+## Presentation
 This chatbot was developed in order to manage efficiently any facebook page. It use Facebook API.
 Gobot use Levenshtein distance algorithm for pattern matching to calculate a match percentage between the received message and templates defined in content.yml in order to be more flexible for the interlocutor instead of only responding to messages that match exactly.
 For example, if you have set a minimal matching percentage of 40 % and defined patterns like this in content.yml :
@@ -84,7 +88,7 @@ You can copy config.yml.exemple to config.yml and replace corresponding values.
 - Open bash in root project directory and run :
 ```bash
 # Install dependencies (mux and yaml.v2)
-go install
+dep ensure
 
 go run src/*.go # Run program without build it
 # or

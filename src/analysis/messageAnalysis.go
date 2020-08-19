@@ -36,7 +36,7 @@ func matchingPercentage(str1, str2 string) float64 {
 	// Get Levenshtein distance between these two strings
 	var distance = levenshteinDistance(str1, str2)
 
-	// Compare strings lenght and make a matching percentage between them
+	// Compare strings length and make a matching percentage between them
 	if len(str1) >= len(str2) {
 		return float64(len(str1)-distance) / float64(len(str1))
 	}
@@ -49,7 +49,7 @@ func levenshteinDistance(str1, str2 string) int {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
-	// Get and store lenght of these strings
+	// Get and store length of these strings
 	runeStr1len := len(runeStr1)
 	runeStr2len := len(runeStr2)
 	if runeStr1len == 0 {
