@@ -4,9 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	Analysis "gobot/src/analysis"
 	"log"
 	"net/http"
+
+	Analysis "github.com/hbollon/gobot/src/analysis"
 )
 
 // API_URL : Facebook API url for request
