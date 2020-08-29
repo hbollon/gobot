@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	Messaging "github.com/hbollon/gobot/src/messaging"
-	Yaml "github.com/hbollon/gobot/src/yaml"
+	Messaging "github.com/hbollon/gobot/internal/messaging"
+	Yaml "github.com/hbollon/gobot/internal/yaml"
 )
 
 var config Yaml.Config // Config struct instance

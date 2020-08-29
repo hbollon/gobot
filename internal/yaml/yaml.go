@@ -32,7 +32,7 @@ var ResponsesPool ResponsePool = parseContentYml()
 // Parse content yml file and return its content
 func parseContentYml() ResponsePool {
 	var pool ResponsePool
-	content, err := ioutil.ReadFile("./config/content.yml")
+	content, err := ioutil.ReadFile("./configs/content.yml")
 	if err != nil {
 		log.Panicf("Reading file error: %s", err)
 	}
@@ -49,7 +49,7 @@ func parseContentYml() ResponsePool {
 
 // Read config yml file , update Config instance with this data and return content
 func (c *Config) readConfigYml() *Config {
-	file, err := ioutil.ReadFile("./config/config.yml")
+	file, err := ioutil.ReadFile("./configs/config.yml")
 	if err != nil {
 		log.Panicf("Error opening config file: %s", err)
 	}

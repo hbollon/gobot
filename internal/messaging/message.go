@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 
-	Analysis "github.com/hbollon/gobot/src/analysis"
+	Analysis "github.com/hbollon/gobot/internal/analysis"
 )
 
 // API_URL : Facebook API url for request

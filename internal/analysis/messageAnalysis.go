@@ -1,7 +1,7 @@
 package analysis
 
 import (
-	Yaml "github.com/hbollon/gobot/src/yaml"
+	Yaml "github.com/hbollon/gobot/internal/yaml"
 )
 
 // FindResponse return most high matching response in function of the received message

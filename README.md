@@ -29,7 +29,6 @@
 
 ## Requirements
 - [Go](https://golang.org/doc/install)
-- [Dep](https://github.com/golang/dep) : Package Manager
 - Facebook account
 
 ## Presentation
@@ -76,7 +75,7 @@ git clone https://github.com/hbollon/gobot
 - Configure your webhook Callback URL (You can use [Ngrok](https://ngrok.com/) to make public URL to your localhost for testing purpose), the Verify Token and subscribe to messages field:
 <img align="center" src="https://i.ibb.co/NLHNFTB/webhook.png" alt="webhook" border="0" />
 
-- Edit config/config.yml file with your Messenger App credentials : 
+- Edit configs/config.yml file with your Messenger App credentials : 
 ```yaml
 # Facebook API config
 app_secret: <app_secret> # Secret key which can be found in the app settings on Facebook Developer dashboard
@@ -87,12 +86,9 @@ You can copy config.yml.exemple to config.yml and replace corresponding values.
 
 - Open bash in root project directory and run :
 ```bash
-# Install dependencies (mux and yaml.v2)
-dep ensure
-
-go run src/*.go # Run program without build it
+go run cmd/gobot/*.go # Run program without build it
 # or
-go build src/*.go && ./main # Build and run
+go build cmd/gobot/*.go && ./gobot # Build and run
 
 ```
 
